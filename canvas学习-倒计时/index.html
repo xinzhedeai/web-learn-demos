@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width="1024" heigh="768" style="border: 1px solid #aaa; display: block; margin: 50px auto;">
+    当前浏览器不支持canvas，请更换浏览器。
+    这段文字在支持canvas的浏览器中是看不到的。
+  </canvas>
+  <script>
+    window.onload = function(){
+      var canvas = document.getElementById('canvas');
+      canvas.width = 1024;
+      canvas.height = 768;
+      var context = canvas.getContext('2d');
+      // 使用context绘制
+    }
+
+    // if判断浏览器是否支持canvas
+    if(canvas.getContext('2d')){
+      var context = canvas.getContext('2d');
+      // 使用context绘制
+    }else{
+      alert('当前浏览器不支持canvas，请更换浏览器。');
+    }
+  
+  </script>
+</body>
+</html>

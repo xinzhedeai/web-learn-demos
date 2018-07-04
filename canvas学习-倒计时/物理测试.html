@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto;">
+    当前浏览器不支持canvas，请更换浏览器。 这段文字在支持canvas的浏览器中是看不到的。
+  </canvas>
+  <script>
+    var ball = {x: 512, y: 100, r: 20, g: 2, vx: -4, vy: -10, color: '#005588'}
+    window.onload = function () {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 1024;
+      canvas.height = 768;
+      var context = canvas.getContext('2d');
+      // 使用context绘制
+      setInterval(function(){
+        render(context);
+        update();
+      }, 50);
+    }
+    function update(){
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+      ball.vy += ball.g;
+
+      if(ball.y >= 768 -ball.r){ // 碰撞检测
+        ball.y = 768 - ball.r;
+        ball.vy = -ball.vy * 0.5; // 0.5为摩擦系数
+      }
+    }
+    function render(cxt){
+      cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+      cxt.beginPath();
+      console.info('x:'+ball.x + 'y:'+ ball.y + 'r:'+ ball.r);
+      cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+      cxt.closePath();
+      cxt.fillStyle = ball.color;
+      cxt.fill();
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="1024" heigh="768" style="border: 1px solid #aaa; display: block; margin: 50px auto;">
+    当前浏览器不支持canvas，请更换浏览器。 这段文字在支持canvas的浏览器中是看不到的。
+  </canvas>
+  <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas');
+      canvas.width = 1024;
+      canvas.height = 768;
+      var context = canvas.getContext('2d');
+      // 使用context绘制
+      context.beginPath(); // 开启一个新的路径（防止被其他绘制线条覆盖）
+      context.moveTo(100, 100); // 绘制起点
+      context.lineTo(700, 700); // 绘制终点
+      context.lineTo(100, 700); 
+      context.lineTo(100, 100);
+      context.closePath(); // 关闭路径
+      // 绘制 实心三角形
+      context.fillStyle = 'rgb(2, 100, 30)';
+      context.fill(); // 填充
+      // 绘制 空心三角形
+      context.lineWidth = 5;
+      context.strokeStyle = '#f30'; // 设定样式 css中的样式值 eg：red
+      context.stroke(); // 开始绘制
+
+      // 开启新的路径
+      context.beginPath();
+      context.moveTo(200, 100);
+      context.lineTo(700, 600);
+      context.closePath();
+      context.strokeStyle = 'black';
+      context.stroke();
+    }
+
+ 
+
+  </script>
+</body>
+
+</html>
