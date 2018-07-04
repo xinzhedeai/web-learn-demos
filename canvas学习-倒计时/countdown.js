@@ -3,7 +3,9 @@ var WINDOW_HEIGHT = 768;
 var RADIUS = 8;
 var MARGIN_TOP = 60; // 数字距离画布的上边距
 var MARGIN_LEFT = 30;
-const endTime = new Date(2018, 6, 5, 18, 47, 52);
+const endTime = new Date();
+// 距离当前时间就是一个小时
+endTime.setTime(endTime.getTime() + 3600*1000);
 var curShowTimeSeconds = 0;
 
 var balls = []; // 声明小球
